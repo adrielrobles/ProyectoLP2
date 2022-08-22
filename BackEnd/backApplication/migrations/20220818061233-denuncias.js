@@ -11,24 +11,25 @@ module.exports = {
      */
      await queryInterface.createTable('denuncia', {
       iddenuncia: {
-        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        type: Sequelize.INTEGER,
         allowNull: false,
         primaryKey: true
       },
       titulo: {
-        type: DataTypes.STRING(50),
+        type: Sequelize.STRING(50),
         allowNull: true
       },
       descripcion: {
-        type: DataTypes.STRING(150),
+        type: Sequelize.STRING(350),
         allowNull: true
       },
       num_Apoyos: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         allowNull: true
       },
       idciudadano: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         allowNull: false,
         references: {
           model: 'ciudadano',
@@ -36,7 +37,7 @@ module.exports = {
         }
       },
       idhospital: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         allowNull: false,
         references: {
           model: 'hospital',
@@ -44,12 +45,12 @@ module.exports = {
         }
       },
       idestado: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         allowNull: false,
         references: {
           model: 'estado',
           key: 'idestado'
-        }
+        },
         onDelete:"CASCADE",
         onUpdate:"CASCADE"
       }

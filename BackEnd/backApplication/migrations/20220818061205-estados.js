@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  aup: async (queryInterface, Sequelize) => {
+  up: async (queryInterface, Sequelize) => {
     
     /**
      * Add altering commands here.
@@ -11,12 +11,13 @@ module.exports = {
      */
      await queryInterface.createTable('estado', {
       idestado: {
-        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        type: Sequelize.INTEGER,
         allowNull: false,
         primaryKey: true
       },
       nom_estado: {
-        type: DataTypes.STRING(20),
+        type: Sequelize.STRING(20),
         allowNull: false
       }
     },);

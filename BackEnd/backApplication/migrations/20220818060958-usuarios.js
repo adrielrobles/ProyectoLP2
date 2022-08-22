@@ -11,16 +11,17 @@ module.exports = {
      */
      await queryInterface.createTable('usuario', {
       idusuario: {
-        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        type: Sequelize.INTEGER,
         allowNull: false,
         primaryKey: true
       },
       correo: {
-        type: DataTypes.STRING(20),
+        type: Sequelize.STRING(50),
         allowNull: false
       },
       contrasena: {
-        type: DataTypes.STRING(40),
+        type: Sequelize.STRING(40),
         allowNull: false
       }
     },);

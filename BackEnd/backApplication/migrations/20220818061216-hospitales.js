@@ -11,33 +11,34 @@ module.exports = {
      */
      await queryInterface.createTable('hospital', {
       idhospital: {
-        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        type: Sequelize.INTEGER,
         allowNull: false,
         primaryKey: true
       },
       nombre: {
-        type: DataTypes.STRING(25),
+        type: Sequelize.STRING(100),
         allowNull: true
       },
       url: {
-        type: DataTypes.STRING(75),
+        type: Sequelize.STRING(500),
         allowNull: true
       },
       direccion: {
-        type: DataTypes.STRING(75),
+        type: Sequelize.STRING(500),
         allowNull: true
       },
       telefono: {
-        type: DataTypes.STRING(15),
+        type: Sequelize.STRING(15),
         allowNull: true
       },
       idusuario: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         allowNull: false,
         references: {
           model: 'usuario',
           key: 'idusuario'
-        }
+        },
         onDelete:"CASCADE",
         onUpdate:"CASCADE"
       }

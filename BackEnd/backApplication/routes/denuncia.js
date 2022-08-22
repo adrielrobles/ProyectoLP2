@@ -1,5 +1,6 @@
 var express = require('express');
 const denuncia = require('../models/denuncia.js');
+const { Op } = require("sequelize");
 
 var router = express.Router();
 
@@ -10,9 +11,9 @@ const initModels = require('../models/init-models');
 var models= initModels(Sequelize)
 
 /* GET Recuperar Todas las denuncias por ciudadano. */
-router.get('/:idciudadano' , async (req , res , next) => {
+router.get('/ciudadano' , async (req , res , next) => {
 
-  let idciudadano = req.params.idciudadano;
+  let idciudadano = req.query.idciudadano;
 
   models.denuncia.findAll({
       attributes: { exclude: ["updatedAt"] },
@@ -21,6 +22,20 @@ router.get('/:idciudadano' , async (req , res , next) => {
       res.status(200).send(denuncia)
   }).catch(error => res.status(400).send(error));
 });
+
+/* GET Recuperar Todas las denuncias por estado del ciudadano. */
+router.get('/estado' , async (req , res , next) => {
+
+    let idciudadano = req.query.idciudadano;
+    let idestado = req.query.idestado;
+
+    models.denuncia.findAll({
+        attributes: { exclude: ["updatedAt"] },
+        where: {[Op.and]: [{ idciudadano:idciudadano }, { idestado: idestado }],}
+    }).then(denuncia => {
+        res.status(200).send(denuncia)
+    }).catch(error => res.status(400).send(error));
+  });
 
 /*Post: Crear Denuncia */
 router.post('/' ,async (req , res , next) => {
@@ -39,8 +54,6 @@ router.post('/' ,async (req , res , next) => {
       },
       {   fields : ['titulo' , 'descripcion' , 'num_Apoyos','idciudadano','idhospital','idestado'] }
       );
-
-      console.log('marca: '  , denuncia);
 
       res.status(201).json({
           message: "Denuncia creada con exito!",

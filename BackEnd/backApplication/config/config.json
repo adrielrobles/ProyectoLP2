@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "Elaine852050",
-    "database": "lpback2",
+    "password": "root123",
+    "database": "consulta_base",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

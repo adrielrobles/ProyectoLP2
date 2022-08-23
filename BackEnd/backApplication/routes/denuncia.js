@@ -116,4 +116,21 @@ router.post('/delete/:id',async (req,res)=>{
 
 })
 
+
+/*get: Visualizar denuncia por una fecha en específico */
+router.get('/fecha' , async (req , res , next) => {
+
+    
+    let fechaDenuncia = req.query.fechaDenuncia;
+  
+    models.denuncia.findAll({
+        attributes: { exclude: ["updatedAt"] },
+        where: {fechaDenuncia : fechaDenuncia}
+    }).then(denuncia => {
+        res.status(200).send(denuncia)
+    }).catch(error => res.status(400).send(error));
+  
+});
+
+
 module.exports = router;

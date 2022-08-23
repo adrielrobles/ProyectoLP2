@@ -67,4 +67,31 @@ router.post('/' ,async (req , res , next) => {
   
 });
 
+/*Put: Apoyar denuncia */
+router.put('/apoyo/:iddenuncia', async (req, res) =>{
+
+    let iddenuncia = req.params.iddenuncia;
+
+    try{
+    let denuncia = await models.denuncia.findOne({
+        where: {iddenuncia: iddenuncia}
+    })
+    let new_num_apoyo =  denuncia.num_Apoyos + 1;
+    console.log(new_num_apoyo);
+       denuncia = await models.denuncia.update({  num_Apoyos: new_num_apoyo }, {
+        where: { 
+        iddenuncia: iddenuncia
+        }
+        })
+
+        res.status(200).json({
+            message: "Denuncia apoyada!",
+        });
+
+    }catch(error){
+        console.log('Error: ',error);
+      res.status(404).send(error)
+    }
+});
+
 module.exports = router;

@@ -14,6 +14,10 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(150),
       allowNull: true
     },
+    fechaDenuncia: {
+      type: DataTypes.DATE,
+      allowNull: true
+    },
     num_Apoyos: {
       type: DataTypes.INTEGER,
       allowNull: true

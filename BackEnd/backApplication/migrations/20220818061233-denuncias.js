@@ -28,6 +28,10 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: true
       },
+      fechaDenuncia: {
+        type: Sequelize.DATE,
+        allowNull: true
+      },
       idciudadano: {
         type: Sequelize.INTEGER,
         allowNull: false,

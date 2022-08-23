@@ -67,4 +67,24 @@ router.post('/' ,async (req , res , next) => {
   
 });
 
+/*Post: Eliminar Denuncia */
+router.post('/delete/:id',async (req,res)=>{
+    let id = req.params.id;
+    try{
+        await models.denuncia.destroy({
+            where : {iddenuncia:id}
+        })
+
+        res.status(201).json({
+            message: "Denuncia eliminada con exito!",
+            content: denuncia
+        });
+        
+    }catch(error){
+      console.log('Error: ',error);
+      res.status(404).send(error)
+  }
+
+})
+
 module.exports = router;

@@ -39,35 +39,34 @@ router.get('/estado' , async (req , res , next) => {
 
 /*Post: Crear Denuncia */
 router.post('/' ,async (req , res , next) => {
-    let titulo = req.body.titulo;
-    let descripcion = req.body.descripcion;
-    let idciudadano = req.body.idciudadano;
-    let idhospital = req.body.idhospital;
-    let fechaDenuncia = Date.now();
-    try{
-        let denuncia = await models.denuncia.create({
-            titulo : titulo,
-            descripcion: descripcion,
-            num_Apoyos : 0,
-            fechaDenuncia: fechaDenuncia,
-            idciudadano: idciudadano,
-            idhospital: idhospital,
-            idestado:1
-        },
-        {   fields : ['titulo' , 'descripcion' , 'num_Apoyos','fechaDenuncia','idciudadano','idhospital','idestado'] }
-        );
+  let titulo = req.body.titulo;
+  let descripcion = req.body.descripcion;
+  let idciudadano = req.body.idciudadano;
+  let idhospital = req.body.idhospital;
+  try{
+      let denuncia = await models.denuncia.create({
+          titulo : titulo,
+          descripcion: descripcion,
+          num_Apoyos : 0,
+          idciudadano: idciudadano,
+          idhospital: idhospital,
+          idestado:1
+      },
+      {   fields : ['titulo' , 'descripcion' , 'num_Apoyos','idciudadano','idhospital','idestado'] }
+      );
+
+      res.status(201).json({
+          message: "Denuncia creada con exito!",
+          content: denuncia
+      });
+
+  }catch(error){
+      console.log('Error: ',error);
+      res.status(404).send(error)
+  }
   
-        res.status(201).json({
-            message: "Denuncia creada con exito!",
-            content: denuncia
-        });
-  
-    }catch(error){
-        console.log('Error: ',error);
-        res.status(404).send(error)
-    }
-    
-  });
+});
+
 /*Put: Apoyar denuncia */
 router.put('/apoyo/:iddenuncia', async (req, res) =>{
 
@@ -115,5 +114,7 @@ router.post('/delete/:id',async (req,res)=>{
   }
 
 })
+
+
 
 module.exports = router;

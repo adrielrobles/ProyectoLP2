@@ -1,6 +1,6 @@
 {
-    "name": "application_lp2",
-    "short_name": "application_lp2",
+    "name": "proyectolenguajes",
+    "short_name": "proyectolenguajes",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

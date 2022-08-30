@@ -8,23 +8,23 @@ class WelcomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: /* const Color(0xffF2F2F2) */ Color.fromARGB(255, 255, 255, 255),
-          body: Container(
-            child: Column(
-        children: [
-              const SizedBox(height: 105),
+      backgroundColor: /* const Color(0xffF2F2F2) */ Color
+          .fromARGB(255, 255, 255, 255),
+      body: Container(
+        child: Column(
+          children: [
+            const SizedBox(height: 105),
             BlueButton(
-              buttonText: 'Registrarse',
-              onPressed: () {
-                Navigator.pushReplacementNamed(context, 'home');
-              }),
-              
-              const SizedBox(height: 15),
-              BlueButton(
-              buttonText: 'Iniciar Sesion',
-              onPressed: () {
-                Navigator.pushReplacementNamed(context, 'home');
-              }),
+                buttonText: 'Registrarse',
+                onPressed: () {
+                  Navigator.pushReplacementNamed(context, 'home');
+                }),
+            const SizedBox(height: 15),
+            BlueButton(
+                buttonText: 'Iniciar Sesion',
+                onPressed: () {
+                  Navigator.pushReplacementNamed(context, 'eliminar');
+                }),
             /*  TextButton(
                  style: ButtonStyle(
                  foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
@@ -34,11 +34,9 @@ class WelcomePage extends StatelessWidget {
                   },
                   child: const Text('Iniciar Sesion'),
                 ) ,*/
-          
-        ],
+          ],
+        ),
       ),
-          ),
     );
   }
 }
-

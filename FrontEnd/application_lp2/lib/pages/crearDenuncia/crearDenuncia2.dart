@@ -4,12 +4,16 @@ import '../../models/hospital.dart';
 import '../../services/denuncia_Services.dart';
 import '../../services/hospital_Services.dart';
 
-class CrearDenunciaPage extends StatefulWidget {
+class CrearDenunciaPage extends StatelessWidget {
   const CrearDenunciaPage({Key? key, required this.idhospital}) : super(key: key);
   final String idhospital;
 
-    State<CrearDenunciaPage> createState() => _InicioState(idhospital);
-
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home:  Inicio(id_hospital: idhospital,),
+    );
+  }
 }
 
 List<DropdownMenuItem<String>> dropdownItems(List<Hospital> data) {
@@ -28,9 +32,14 @@ List<DropdownMenuItem<String>> dropdownItems(List<Hospital> data) {
 }
 
 
+class Inicio extends StatefulWidget {
+  const Inicio({Key? key,required this.id_hospital}) : super(key: key);
+  final String id_hospital;
+  @override
+  State<Inicio> createState() => _InicioState(id_hospital);
+}
 
-
-class _InicioState extends State<CrearDenunciaPage> {
+class _InicioState extends State<Inicio> {
     String selectedValue = "1";
 
   _InicioState(String id_hospital){

@@ -23,7 +23,7 @@ class WelcomePage extends StatelessWidget {
             BlueButton(
                 buttonText: 'Iniciar Sesion',
                 onPressed: () {
-                  Navigator.pushReplacementNamed(context, 'eliminar');
+                  Navigator.pushReplacementNamed(context, "verHospitales");
                 }),
             /*  TextButton(
                  style: ButtonStyle(

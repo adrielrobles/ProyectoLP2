@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proyectolenguajes/pages/verHospitales/verHospitales.dart';
 
 import '../pages/home/home_page.dart';
 import '../pages/login/login.dart';
@@ -11,5 +12,6 @@ final Map<String, Widget Function(BuildContext)> appRoutes = {
   'login': (_) => const LoginPage(),
   'register': (_) => const RegisterPage(),
   'welcome': (_) => const WelcomePage(),
+  'verHospitales': (_) => const VerHospitalesPage(),
   'eliminar': (_) => Eliminar(),
 };

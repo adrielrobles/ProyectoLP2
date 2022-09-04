@@ -16,4 +16,20 @@ router.get('/', function(req, res, next) {
     res.status(200).send(hospitales)
 }).catch(error => res.status(400).send(error));});
 
+router.get('/search', async function(req, res, next) {
+  let nombre = req.query.nombre.toLowerCase();
+  models.hospital.findAll({
+    limit: 10,
+    where: {
+        nombre: Sequelize.where(Sequelize.fn('LOWER', Sequelize.col('nombre')), 'LIKE', '%' + nombre + '%')
+    }
+}).then(function(hospitales){
+    res.status(200).send(hospitales)
+}).catch(function(error){
+    console.log(error);
+});
+});
+
+
+
 module.exports = router;

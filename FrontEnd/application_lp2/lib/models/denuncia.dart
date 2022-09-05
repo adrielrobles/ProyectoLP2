@@ -2,7 +2,7 @@ class Denuncia{
   int iddenuncia;
   String titulo;
   String descripcion;
-  DateTime fechaDenuncia;
+  String fechaDenuncia;
   int num_Apoyos;
   int idciudadano;
 

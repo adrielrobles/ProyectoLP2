@@ -16,14 +16,14 @@ class WelcomePage extends StatelessWidget {
             BlueButton(
               buttonText: 'Registrarse',
               onPressed: () {
-                Navigator.pushReplacementNamed(context, 'home');
+                Navigator.pushReplacementNamed(context, 'mostrarDenuncia');
               }),
               
               const SizedBox(height: 15),
               BlueButton(
               buttonText: 'Iniciar Sesion',
               onPressed: () {
-                Navigator.pushReplacementNamed(context, 'home');
+                Navigator.pushReplacementNamed(context, 'mostrarDenuncia');
               }),
             /*  TextButton(
                  style: ButtonStyle(

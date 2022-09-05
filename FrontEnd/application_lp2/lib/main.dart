@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Consultas App',
-      initialRoute: 'welcome',
+      initialRoute: 'mostrarDenuncia',
       routes: appRoutes,
     );
   }

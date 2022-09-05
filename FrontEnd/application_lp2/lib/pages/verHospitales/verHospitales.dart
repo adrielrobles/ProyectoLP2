@@ -1,3 +1,5 @@
+import 'dart:js_util';
+
 import 'package:flutter/material.dart';
 import 'package:proyectolenguajes/pages/crearDenuncia/crearDenuncia.dart';
 
@@ -163,7 +165,13 @@ class _InicioState extends State<VerHospitalesPage> {
                                                               fontSize: 20.0,
                                                             ),
                                                           ),
-                                                          onPressed: () {}),
+                                                          onPressed: () {
+                                                            setState(() {
+                                                              String? nombre =textController?.text;
+                                                              _listaHospitales =  HospitalService().searchHospitales(nombre);
+                                                              
+                                                            });
+                                                          }),
                                                     ),
                                                   ],
                                                 ),
@@ -298,7 +306,7 @@ class _InicioState extends State<VerHospitalesPage> {
                                                                       .circular(
                                                                           20)),
                                                       child: Text(
-                                                        "Mas Informacion",
+                                                        "Historial de Denuncias",
                                                         style: TextStyle(
                                                           fontSize: 16,
                                                         ),

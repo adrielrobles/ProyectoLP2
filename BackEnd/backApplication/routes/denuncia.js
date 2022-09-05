@@ -23,6 +23,19 @@ router.get('/ciudadano' , async (req , res , next) => {
   }).catch(error => res.status(400).send(error));
 });
 
+/* GET Recuperar Todas las denuncias por ciudadano. */
+router.get('/hospital' , async (req , res , next) => {
+
+    let idhospital = req.query.idhospital;
+  
+    models.denuncia.findAll({
+        attributes: { exclude: ["updatedAt"] },
+        where: {idhospital : idhospital}
+    }).then(denuncia => {
+        res.status(200).send(denuncia)
+    }).catch(error => res.status(400).send(error));
+  });
+
 /* GET Recuperar Todas las denuncias por estado del ciudadano. */
 router.get('/estado' , async (req , res , next) => {
 
@@ -36,6 +49,8 @@ router.get('/estado' , async (req , res , next) => {
         res.status(200).send(denuncia)
     }).catch(error => res.status(400).send(error));
   });
+
+
 
 /*Post: Crear Denuncia */
 router.post('/' ,async (req , res , next) => {
@@ -155,6 +170,8 @@ router.get('/:iddenuncia' , async (req , res , next) => {
       res.status(404).send(error)
   }
 });
+
+
 
 /*visualizar todas las denuncias*/
 router.get('/', function(req, res, next) {

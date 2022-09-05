@@ -34,6 +34,24 @@ class DenunciaService {
     }
   }
 
+  Future<List<Denuncia>> getDenunciasByHospital(int id) async {
+    String? idhospital = id.toString();
+    Response res =
+        await get(Uri.parse('$_apiURL/hospital?idhospital=' + idhospital));
+    List<Denuncia> denuncias = [];
+    if (res.statusCode == 200) {
+      var json = List.from(jsonDecode(res.body));
+      for (var element in json) {
+        Denuncia denuncia = Denuncia.fromMap(element);
+        denuncias.add(denuncia);
+      }
+
+      return denuncias;
+    } else {
+      throw Exception("Fallo la peticion de Denuncias");
+    }
+  }
+
   Future<bool> eliminarDenuncia(iddenuncia) async {
     Response res = await post(Uri.parse(_apiURL2 + "delete/" + iddenuncia),
         headers: {"Content-Type": "application/json"},

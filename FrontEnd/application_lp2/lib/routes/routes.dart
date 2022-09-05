@@ -10,6 +10,7 @@ import '../pages/eliminar/eliminar.dart';
 import '../pages/verDenuncia/verDenuncia.dart';
 import '../pages/verDenuncia/ubicacion.dart';
 import '../pages/todasDenuncia/todasDenuncias.dart';
+import '../pages/verHospitales/denunciaHospital.dart';
 
 final Map<String, Widget Function(BuildContext)> appRoutes = {
   'home': (_) => const HomePage(),
@@ -23,4 +24,5 @@ final Map<String, Widget Function(BuildContext)> appRoutes = {
   'mostrarDenuncia': (_) => const MostrarDenuncias(),
   'ubicacion': (_) => const ubicacionApp(),
   'todas': (_) => const TodasDenunciasApp(),
+  'hospitaltodas': (_) => const denunciasHospital(),
 };

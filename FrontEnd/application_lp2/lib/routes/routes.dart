@@ -6,6 +6,7 @@ import '../pages/login/login.dart';
 import '../pages/register/register.dart';
 import '../pages/welcome/welcome.dart';
 import '../pages/eliminar/eliminar.dart';
+import '../pages/crearDenuncia/crearDenuncia.dart';
 
 final Map<String, Widget Function(BuildContext)> appRoutes = {
   'home': (_) => const HomePage(),

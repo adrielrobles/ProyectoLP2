@@ -31,13 +31,13 @@ class WelcomePage extends StatelessWidget {
             blue.BlueButton(
                 buttonText: 'Registrarse',
                 onPressed: () {
-                  Navigator.pushReplacementNamed(context, 'welcome');
+                  Navigator.pushReplacementNamed(context, 'home');
                 }),
             const SizedBox(height: 15),
             white.WhiteButton(
                 buttonText: 'Iniciar Sesion',
                 onPressed: () {
-                  Navigator.pushReplacementNamed(context, "verHospitales");
+                  Navigator.pushReplacementNamed(context, 'home');
                 }),
           ],
         ),

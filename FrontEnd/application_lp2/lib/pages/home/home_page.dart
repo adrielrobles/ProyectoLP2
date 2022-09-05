@@ -6,7 +6,162 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: /* const Color(0xffF2F2F2) */ Color.fromARGB(255, 255, 255, 255),
+      resizeToAvoidBottomInset: false,
+      backgroundColor: /* const Color(0xffF2F2F2) */ Color
+          .fromARGB(255, 255, 255, 255),
+      body: Container(
+        margin: const EdgeInsets.only(left: 300.0, right: 300.0),
+        child: Column(
+          children: [
+            Image(
+              image: AssetImage('../assets/welcome.jpg'),
+              height: 200,
+            ),
+            Text(
+              '¿Qué deseas hacer hoy?',
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 30,
+              ),
+            ),
+            const SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                InkWell(
+                  child: Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        color: Color.fromARGB(255, 56, 83, 152)),
+                    width: 130,
+                    height: 130,
+                    padding: EdgeInsets.all(20.0),
+                    child: Column(
+                      children: [
+                        Image(
+                            image: AssetImage('../assets/mis_denuncias.png'),
+                            height: 50),
+                        const SizedBox(height: 3),
+                        Text(
+                          'Mis Denuncias',
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                            color: Color.fromARGB(255, 255, 255, 255),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  onTap: () {
+                    Navigator.pushReplacementNamed(context, 'welcome');
+                  },
+                ),
+                const SizedBox(width: 20),
+                InkWell(
+                  child: Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        color: Color.fromRGBO(230, 65, 85, 1)),
+                    width: 130,
+                    height: 130,
+                    padding: EdgeInsets.all(20.0),
+                    child: Column(
+                      children: [
+                        Image(
+                            image: AssetImage('../assets/hospital.png'),
+                            height: 50),
+                        const SizedBox(height: 3),
+                        Text(
+                          'Hospitales Denunciados',
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                            color: Color.fromARGB(255, 255, 255, 255),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  onTap: () {
+                    Navigator.pushReplacementNamed(context, 'welcome');
+                  },
+                )
+              ],
+            ),
+            const SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                InkWell(
+                  child: Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        color: Color.fromRGBO(230, 65, 85, 1)),
+                    width: 130,
+                    height: 130,
+                    padding: EdgeInsets.all(20.0),
+                    child: Column(
+                      children: [
+                        Image(
+                            image: AssetImage('../assets/crear.png'),
+                            height: 50),
+                        const SizedBox(height: 3),
+                        Text(
+                          'Crear Denuncia',
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                            color: Color.fromARGB(255, 255, 255, 255),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  onTap: () {
+                    Navigator.pushReplacementNamed(context, 'welcome');
+                  },
+                ),
+                const SizedBox(width: 20),
+                InkWell(
+                  child: Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        color: Color.fromARGB(255, 56, 83, 152)),
+                    width: 130,
+                    height: 130,
+                    padding: EdgeInsets.all(20.0),
+                    child: Column(
+                      children: [
+                        Image(
+                            image: AssetImage('../assets/perfil.png'),
+                            height: 50),
+                        const SizedBox(height: 3),
+                        Text(
+                          'Mi Perfil',
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                            color: Color.fromARGB(255, 255, 255, 255),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  onTap: () {
+                    Navigator.pushReplacementNamed(context, 'welcome');
+                  },
+                )
+              ],
+            )
+          ],
+        ),
+      ),
     );
   }
 }

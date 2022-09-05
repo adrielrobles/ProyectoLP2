@@ -11,7 +11,6 @@ class VerHospitalesPage extends StatefulWidget {
   const VerHospitalesPage({Key? key}) : super(key: key);
 
   State<VerHospitalesPage> createState() => _InicioState();
-
 }
 
 class _InicioState extends State<VerHospitalesPage> {
@@ -167,9 +166,13 @@ class _InicioState extends State<VerHospitalesPage> {
                                                           ),
                                                           onPressed: () {
                                                             setState(() {
-                                                              String? nombre =textController?.text;
-                                                              _listaHospitales =  HospitalService().searchHospitales(nombre);
-                                                              
+                                                              String? nombre =
+                                                                  textController
+                                                                      ?.text;
+                                                              _listaHospitales =
+                                                                  HospitalService()
+                                                                      .searchHospitales(
+                                                                          nombre);
                                                             });
                                                           }),
                                                     ),
@@ -344,7 +347,11 @@ class _InicioState extends State<VerHospitalesPage> {
                                                           context,
                                                           MaterialPageRoute(
                                                               builder: (context) =>
-                                                                   CrearDenunciaPage(idhospital: _info.idhospital.toString(),)),
+                                                                  CrearDenunciaPage(
+                                                                    idhospital: _info
+                                                                        .idhospital
+                                                                        .toString(),
+                                                                  )),
                                                         );
                                                       }),
                                                 ),

@@ -56,7 +56,7 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   onTap: () {
-                    Navigator.pushReplacementNamed(context, 'welcome');
+                    Navigator.pushReplacementNamed(context, 'mostrarDenuncia');
                   },
                 ),
                 const SizedBox(width: 20),

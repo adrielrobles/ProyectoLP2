@@ -14,7 +14,7 @@ class HomePage extends StatelessWidget {
         child: Column(
           children: [
             Image(
-              image: AssetImage('../assets/welcome.jpg'),
+              image: AssetImage('../assets/casa.png'),
               height: 200,
             ),
             Text(
@@ -87,7 +87,7 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   onTap: () {
-                    Navigator.pushReplacementNamed(context, 'welcome');
+                    Navigator.pushReplacementNamed(context, 'verHospitales');
                   },
                 )
               ],
@@ -123,7 +123,7 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   onTap: () {
-                    Navigator.pushReplacementNamed(context, 'welcome');
+                    Navigator.pushReplacementNamed(context, 'crearDenuncia');
                   },
                 ),
                 const SizedBox(width: 20),

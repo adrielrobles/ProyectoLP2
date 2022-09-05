@@ -15,4 +15,5 @@ final Map<String, Widget Function(BuildContext)> appRoutes = {
   'welcome': (_) => const WelcomePage(),
   'verHospitales': (_) => const VerHospitalesPage(),
   'eliminar': (_) => Eliminar(),
+  'crearDenuncia': (_) => const CrearDenunciaPage(idhospital: "1"),
 };

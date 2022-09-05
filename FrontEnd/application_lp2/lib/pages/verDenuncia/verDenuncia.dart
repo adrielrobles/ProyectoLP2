@@ -100,7 +100,10 @@ class _InicioState extends State<VerDenunciaEspecificaPage> {
                                             elevation:
                                                 MaterialStateProperty.all(2),
                                           ),
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            Navigator.pushReplacementNamed(
+                                                context, 'ubicacion');
+                                          },
                                           child: Container(
                                             width: 200,
                                             height: 50,
@@ -274,20 +277,14 @@ class _InicioState extends State<VerDenunciaEspecificaPage> {
                       )
                     ],
                   );
-                } else if (snapshot2.hasError) {
-                  print(snapshot2.error);
-                  return Text("Error");
+                } else {
+                  return const Center(child: CircularProgressIndicator());
                 }
-                throw UnimplementedError();
               },
             );
-          } else if (snapshot.hasError) {
-            print(snapshot.error);
-            return Text("Error");
+          } else {
+            return const Center(child: CircularProgressIndicator());
           }
-          return Center(
-            child: CircularProgressIndicator(),
-          );
         },
       ),
       bottomNavigationBar: BottomNavigationBar(

@@ -155,4 +155,17 @@ router.get('/:iddenuncia' , async (req , res , next) => {
       res.status(404).send(error)
   }
 });
+
+/*visualizar todas las denuncias*/
+router.get('/', function(req, res, next) {
+    models.denuncia.findAll({
+      attributes: { exclude: ["updatedAt"] }
+  }).then(denuncias => {
+      res.status(200).send(denuncias)
+  }).catch(error => res.status(400).send(error));});
+
+
+
+
+
 module.exports = router;

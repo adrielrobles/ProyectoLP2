@@ -51,7 +51,7 @@ class DenunciaService {
 
     if (res.statusCode == 200) {
       String body = utf8.decode(res.bodyBytes);
-      print(body);
+
       var json = jsonDecode(body)['content'];
 
       return Denuncia.fromMap(json);

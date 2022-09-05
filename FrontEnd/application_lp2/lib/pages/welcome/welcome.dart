@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../widgets/blue_button.dart';
+import '../../widgets/blue_button.dart' as blue;
+import '../../widgets/white_button.dart' as white;
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({Key? key}) : super(key: key);
@@ -11,29 +12,33 @@ class WelcomePage extends StatelessWidget {
       backgroundColor: /* const Color(0xffF2F2F2) */ Color
           .fromARGB(255, 255, 255, 255),
       body: Container(
+        margin: const EdgeInsets.only(left: 300.0, right: 300.0),
         child: Column(
           children: [
-            const SizedBox(height: 105),
-            BlueButton(
+            Image(
+              image: AssetImage('../assets/welcome.jpg'),
+              height: 300,
+            ),
+            Text(
+              '¡BIENVENIDO!',
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 30,
+              ),
+            ),
+            const SizedBox(height: 50),
+            blue.BlueButton(
                 buttonText: 'Registrarse',
                 onPressed: () {
-                  Navigator.pushReplacementNamed(context, 'home');
+                  Navigator.pushReplacementNamed(context, 'welcome');
                 }),
             const SizedBox(height: 15),
-            BlueButton(
+            white.WhiteButton(
                 buttonText: 'Iniciar Sesion',
                 onPressed: () {
                   Navigator.pushReplacementNamed(context, "verHospitales");
                 }),
-            /*  TextButton(
-                 style: ButtonStyle(
-                 foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
-               ),
-                  onPressed: () { 
-                    Navigator.pushReplacementNamed(context, 'home');
-                  },
-                  child: const Text('Iniciar Sesion'),
-                ) ,*/
           ],
         ),
       ),

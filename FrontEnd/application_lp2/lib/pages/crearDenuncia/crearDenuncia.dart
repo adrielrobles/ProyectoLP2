@@ -4,15 +4,12 @@ import '../../models/hospital.dart';
 import '../../services/denuncia_Services.dart';
 import '../../services/hospital_Services.dart';
 
-class CrearDenunciaPage extends StatelessWidget {
-  const CrearDenunciaPage({Key? key}) : super(key: key);
+class CrearDenunciaPage extends StatefulWidget {
+  const CrearDenunciaPage({Key? key, required this.idhospital}) : super(key: key);
+  final String idhospital;
 
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Inicio(),
-    );
-  }
+    State<CrearDenunciaPage> createState() => _InicioState(idhospital);
+
 }
 
 List<DropdownMenuItem<String>> dropdownItems(List<Hospital> data) {
@@ -32,15 +29,14 @@ List<DropdownMenuItem<String>> dropdownItems(List<Hospital> data) {
 
 
 
-class Inicio extends StatefulWidget {
-  const Inicio({Key? key}) : super(key: key);
 
-  @override
-  State<Inicio> createState() => _InicioState();
-}
+class _InicioState extends State<CrearDenunciaPage> {
+    String selectedValue = "1";
 
-class _InicioState extends State<Inicio> {
-  String selectedValue = "1";
+  _InicioState(String id_hospital){
+    selectedValue = id_hospital;
+  }
+
   late Future<List<Hospital>> _hospitales;
   String? dropDownValue;
   TextEditingController? textController1;
@@ -97,6 +93,7 @@ class _InicioState extends State<Inicio> {
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: Color.fromARGB(255, 56, 83, 152),
@@ -117,7 +114,9 @@ class _InicioState extends State<Inicio> {
                     ),
                     child: IconButton(
                       icon: const Icon(Icons.arrow_back_ios_new),
-                      onPressed: () {},
+                      onPressed: () {
+                          Navigator.pop(context);
+                      },
                       color: Colors.white,
                     ),
                   ),

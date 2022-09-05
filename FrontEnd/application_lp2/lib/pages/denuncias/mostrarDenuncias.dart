@@ -29,15 +29,53 @@ class _MainPageState extends State<MostrarDenuncias> {
   }
 
   Widget _futureCardBody() {
+    String estadoText = "";
+    Color estadoColor = Color.fromARGB(255, 56, 83, 152);
     return FutureBuilder(
       future: _listaDenuncias,
       builder: (BuildContext context, AsyncSnapshot  snapshot) {
         if (snapshot.hasData){
-          return ListView.builder(
+          
+          return GestureDetector(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 80,
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 230, 65, 85),
+                      ),
+                      child: Text(
+                          '\nMis Denuncias',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Roboto',
+                            fontSize: 25,
+                            
+                          ),
+                        ),
+                    ),
+
+            Expanded(
+                child: ListView.builder(
             scrollDirection: Axis.vertical,
             itemCount: snapshot.data.length,
             itemBuilder: (context, index) {
               Denuncia _denuncia = snapshot.data[index];
+              if(_denuncia.idestado == 1){
+                estadoText = "Sin Procesar";
+                estadoColor = Color.fromARGB(255, 230, 65, 85);
+                }else if (_denuncia.idestado == 2){
+                  estadoText = "En Proceso";
+                  estadoColor = Color.fromARGB(255, 230, 65, 85);
+                }else if (_denuncia.idestado == 3){
+                  estadoText = "Resuelto";
+                 estadoColor = Color.fromARGB(255, 92, 129, 224);
+                }
               return Card(
                 elevation: 2,
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
@@ -47,54 +85,134 @@ class _MainPageState extends State<MostrarDenuncias> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget> [
-                      ListTile(
-                        title: Text(
-                          _denuncia.titulo,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                             Text(
+                          "#" + _denuncia.iddenuncia.toString(),
                           style: const TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold
                           ),
                         ),
-                        subtitle: Text(
-                          _denuncia.descripcion,
-                          style: const TextStyle(
-                            color: Colors.black38,
-                            fontStyle: FontStyle.italic
-                          ),
+                            
+                            TextButton(
+                              style: TextButton.styleFrom(
+                                 primary: Colors.white,
+                                 backgroundColor: estadoColor,
+                                 minimumSize: const Size(150, 50),
+                              ),
+                              child: Text(
+                                estadoText,
+                                style: TextStyle(
+                                fontSize: 16,
+                                ),
+                              ),
+                                onPressed: () {}),
+                          ],
+                      ),
+                        Row(  
+                            children: [
+                              Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10),
+                        child: Text(
+                          "Fecha de la denuncia: " ,
+                          textAlign: TextAlign.justify,
+                          style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold)
                         ),
-                        contentPadding: EdgeInsets.zero
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 10),
                         child: Text(
-                          _denuncia.descripcion,
+                           _denuncia.fechaDenuncia,
                           textAlign: TextAlign.justify,
                           style: const TextStyle(fontSize: 15)
                         ),
                       ),
+                            ],
+                        ),
+                      Row(  
+                            children: [
+                              Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10),
+                        child: Text(
+                          "Título de la denuncia: " ,
+                          textAlign: TextAlign.justify,
+                          style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold)
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10),
+                        child: Text(
+                           _denuncia.titulo,
+                          textAlign: TextAlign.justify,
+                          style: const TextStyle(fontSize: 15)
+                        ),
+                      ),
+
+                            ],
+                        ),
+
+                       Row(  
+                            children: [
+                              Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10),
+                        child: Text(
+                          "Descripción de la denuncia: " ,
+                          textAlign: TextAlign.justify,
+                          style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold)
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10),
+                        child: Text(
+                           _denuncia.descripcion,
+                          textAlign: TextAlign.justify,
+                          style: const TextStyle(fontSize: 15)
+                        ),
+                      ),
+                            ],
+                        ),
+
+
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget> [
-                          Text(
-                            " cupos disponibles",
-                            style: const TextStyle(
-                              fontSize: 15,
-                              color: Colors.black38
+                          TextButton(
+                            child: Row(
+                              children: <Widget> [
+                                Icon(
+                                  Icons.handshake ,
+                                  color: Color.fromARGB(255, 65, 113, 234),
+                                  size: 25,
+                                ),
+                                Text(
+                                  _denuncia.num_Apoyos.toString(),
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    color: Color.fromARGB(255, 65, 113, 234),
+                                    fontWeight: FontWeight.bold
+                                  ),
+                                )
+                              ]
                             ),
+                            onPressed: (){
+                             
+                            }, 
                           ),
                           TextButton(
                             child: Row(
                               children: <Widget> [
                                 Icon(
-                                  Icons.info_outline,
-                                  color: Colors.orange[300],
+                                  Icons.delete ,
+                                  color: Color.fromARGB(255, 255, 77, 77),
                                   size: 20,
                                 ),
                                 Text(
-                                  " Mas información",
+                                  " Eliminar",
                                   style: TextStyle(
                                     fontSize: 15,
-                                    color: Colors.orange[300],
+                                    color: Color.fromARGB(255, 255, 77, 77),
                                     fontWeight: FontWeight.bold
                                   ),
                                 )
@@ -111,13 +229,23 @@ class _MainPageState extends State<MostrarDenuncias> {
                 )
               );
             }
-          );
+           ),
+
+
+            ),
+
+           
+
+                  ],
+                ),
+
+              ); 
         } else {
-          print(snapshot.error);
-          print(snapshot);
-            return Text("Error");
+          return const Center(child: CircularProgressIndicator());
         }
       }
     ); 
   }
 }
+
+

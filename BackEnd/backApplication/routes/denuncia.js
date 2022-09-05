@@ -134,5 +134,23 @@ router.get('/fecha' , async (req , res , next) => {
   
 });
 
+/*get: Visualizar una denuncia especifica por id:denuncia*/
 
+router.get('/:iddenuncia' , async (req , res , next) => {
+
+    let id = req.params.iddenuncia;
+    try{
+        let denuncia = await models.denuncia.findOne({
+            where : {iddenuncia:id}
+        })
+        console.log(denuncia);
+        res.status(200).json({
+            content: denuncia
+        });
+        
+    }catch(error){
+      console.log('Error: ',error);
+      res.status(404).send(error)
+  }
+});
 module.exports = router;

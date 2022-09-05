@@ -14,7 +14,7 @@ module.exports = {
      await queryInterface.bulkInsert('Hospital', [{
       idhospital:1,
       nombre:'Hospital Guayaquil Abel Gilbert Pontón',
-      url:'https://www.salud.gob.ec/wp-content/uploads/2018/09/H-ABEL-GILBERT-PONTON.png',
+      url:'https://gk.city/wp-content/uploads/2020/08/abel-gilbert.jpg',
       direccion:"https://www.google.com/maps/place/Hospital+Guayaquil+Abel+Gilbert+Pont%C3%B3n/@-2.1858354,-79.9451634,13z/data=!4m19!1m13!4m12!1m4!2m2!1d-79.9288784!2d-2.1594851!4e1!1m6!1m2!1s0x902d71c44ca735d3:0x3c18effbb3d3cf2f!2shospitales+Guayaquil!2m2!1d-79.9307658!2d-2.2123607!3m4!1s0x902d71c44ca735d3:0x3c18effbb3d3cf2f!8m2!3d-2.2123607!4d-79.9307658",
       telefono:'042597400',
       idusuario:4,
@@ -22,7 +22,7 @@ module.exports = {
     {
       idhospital:2,
       nombre:'Hospital Luis Vernaza de la Junta de Beneficencia de Guayaquil',
-      url:'https://blobdoctorisyprdo.blob.core.windows.net/catalogs/medicalCenters/CM000005.jpg',
+      url:'https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Vista_del_patio_del_Hospital_Luis_Vernaza.jpg/1200px-Vista_del_patio_del_Hospital_Luis_Vernaza.jpg',
       direccion:"https://www.google.com/maps/dir/-2.1594851,-79.9288784/Hospital+Luis+Vernaza+de+la+Junta+de+Beneficencia+de+Guayaquil/@-2.1725059,-79.9410066,13z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x902d6dd16c021207:0x9df557b472d59f28!2m2!1d-79.8804248!2d-2.1834524",
       telefono:'042560300',
       idusuario:5,

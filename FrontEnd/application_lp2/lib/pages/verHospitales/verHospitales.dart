@@ -2,6 +2,7 @@ import 'dart:js_util';
 
 import 'package:flutter/material.dart';
 import 'package:proyectolenguajes/pages/crearDenuncia/crearDenuncia.dart';
+import 'package:proyectolenguajes/widgets/nav_Bar.dart';
 
 import '../../models/hospital.dart';
 import '../../services/denuncia_Services.dart';
@@ -9,18 +10,12 @@ import '../../services/hospital_Services.dart';
 
 class VerHospitalesPage extends StatefulWidget {
   const VerHospitalesPage({Key? key}) : super(key: key);
-
   State<VerHospitalesPage> createState() => _InicioState();
 }
 
 class _InicioState extends State<VerHospitalesPage> {
-  int _selectedIndex = 0;
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+  
 
   late Future<List<Hospital>> _listaHospitales;
   TextEditingController? textController;
@@ -374,28 +369,7 @@ class _InicioState extends State<VerHospitalesPage> {
               return const Center(child: CircularProgressIndicator());
             }
           }),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Hospitales',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            label: 'Inicio',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.list),
-            label: 'Denuncias',
-          ),
-        ],
-        iconSize: 30,
-        currentIndex: _selectedIndex,
-        unselectedItemColor: Colors.white,
-        selectedItemColor: Color.fromARGB(255, 230, 65, 84),
-        onTap: _onItemTapped,
-        backgroundColor: Color.fromARGB(255, 56, 83, 152),
-      ),
-    );
+      bottomNavigationBar:  NavBar( idPage: '0',)
+      );
   }
 }

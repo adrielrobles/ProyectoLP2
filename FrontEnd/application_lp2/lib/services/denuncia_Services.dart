@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart';
+import 'package:proyectolenguajes/models/denuncia.dart';
 
 class DenunciaService {
   final String _apiURL = "http://localhost:3001/denuncia";
@@ -23,6 +24,21 @@ class DenunciaService {
       return true;
     } else {
       throw Exception("Fallo la eliminación");
+    }
+  }
+
+  Future<Denuncia> getDenunciaEspecifica(int id) async {
+    String idS = id.toString();
+    Response res = await get(Uri.parse(_apiURL + '/' + idS));
+
+    if (res.statusCode == 200) {
+      String body = utf8.decode(res.bodyBytes);
+      print(body);
+      var json = jsonDecode(body)['content'];
+
+      return Denuncia.fromMap(json);
+    } else {
+      throw Exception("Fallo la peticion de Denuncia");
     }
   }
 }

@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "Elaine852050",
-    "database": "lpback2",
+    "password": "root",
+    "database": "appdenuncias",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

@@ -44,7 +44,7 @@ class HomePage extends StatelessWidget {
                             height: 50),
                         const SizedBox(height: 3),
                         Text(
-                          'Mis Denuncias',
+                          'Denuncias',
                           textAlign: TextAlign.center,
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
@@ -75,7 +75,7 @@ class HomePage extends StatelessWidget {
                             height: 50),
                         const SizedBox(height: 3),
                         Text(
-                          'Hospitales Denunciados',
+                          'Hospitales',
                           textAlign: TextAlign.center,
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
@@ -142,7 +142,7 @@ class HomePage extends StatelessWidget {
                             height: 50),
                         const SizedBox(height: 3),
                         Text(
-                          'Mi Perfil',
+                          'Mi Denuncias',
                           textAlign: TextAlign.center,
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
@@ -154,7 +154,7 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   onTap: () {
-                    Navigator.pushReplacementNamed(context, 'welcome');
+                    Navigator.pushReplacementNamed(context, 'VerDenuncia');
                   },
                 )
               ],

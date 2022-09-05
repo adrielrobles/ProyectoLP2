@@ -119,6 +119,8 @@ router.post('/delete/:id',async (req,res)=>{
 })
 
 
+
+
 /*get: Visualizar denuncia por una fecha en específico */
 router.get('/fecha' , async (req , res , next) => {
 

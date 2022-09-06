@@ -64,10 +64,8 @@ class DenunciaService {
     }
   }
 
-  Future<bool> eliminarDenuncia(iddenuncia) async {
-    Response res = await post(Uri.parse(_apiURL2 + "delete/" + iddenuncia),
-        headers: {"Content-Type": "application/json"},
-        body: jsonEncode(iddenuncia));
+  Future<bool> eliminarDenuncia(int iddenuncia) async {
+    Response res = await post(Uri.parse(_apiURL + "/delete/" + iddenuncia.toString()));
     if (res.statusCode == 201) {
       return true;
     } else {

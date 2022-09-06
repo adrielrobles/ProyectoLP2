@@ -34,10 +34,10 @@ class WelcomePage extends StatelessWidget {
                   Navigator.pushReplacementNamed(context, 'home');
                 }),
             const SizedBox(height: 15),
-            white.WhiteButton(
+            blue.BlueButton(
                 buttonText: 'Iniciar Sesion',
                 onPressed: () {
-                  Navigator.pushReplacementNamed(context, 'home');
+                  Navigator.pushReplacementNamed(context, 'login');
                 }),
           ],
         ),

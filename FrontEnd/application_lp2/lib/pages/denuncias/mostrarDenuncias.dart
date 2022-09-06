@@ -219,7 +219,11 @@ class _MainPageState extends State<MostrarDenuncias> {
                               ]
                             ),
                             onPressed: (){
-                             
+                             DenunciaService().eliminarDenuncia(_denuncia.iddenuncia).then((value) {
+                              setState((){
+                                _listaDenuncias = DenunciaService().getDenunciasByCiudadano();
+                              });
+                             } );
                             }, 
                           )
                         ],
@@ -247,5 +251,3 @@ class _MainPageState extends State<MostrarDenuncias> {
     ); 
   }
 }
-
-

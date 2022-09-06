@@ -6,6 +6,7 @@ import 'package:proyectolenguajes/models/denuncia.dart';
 import 'package:proyectolenguajes/pages/crearDenuncia/crearDenuncia.dart';
 import '../../widgets/blue_button.dart' as blue;
 import '../../widgets/white_button.dart' as white;
+import 'package:proyectolenguajes/widgets/nav_Bar.dart';
 
 import '../../models/hospital.dart';
 import '../../services/denuncia_Services.dart';
@@ -287,27 +288,8 @@ class _InicioState extends State<VerDenunciaEspecificaPage> {
           }
         },
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Hospitales',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            label: 'Inicio',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.list),
-            label: 'Denuncias',
-          ),
-        ],
-        iconSize: 30,
-        currentIndex: _selectedIndex,
-        unselectedItemColor: Colors.white,
-        selectedItemColor: Color.fromARGB(255, 230, 65, 84),
-        onTap: _onItemTapped,
-        backgroundColor: Color.fromARGB(255, 56, 83, 152),
+      bottomNavigationBar: NavBar(
+        idPage: '0',
       ),
     );
   }

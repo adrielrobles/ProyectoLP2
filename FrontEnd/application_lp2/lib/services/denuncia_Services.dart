@@ -18,6 +18,18 @@ class DenunciaService {
     }
   }
 
+  //ACTUALIZAR APOYO
+
+  Future<bool> actualizarApoyo(data, idDenuncia) async {
+    Response res = await post(Uri.parse(_apiURL + "/apoyo/" + idDenuncia));
+
+    if (res.statusCode == 201) {
+      return true;
+    } else {
+      throw Exception("Fallo la insercion en Favoritos");
+    }
+  }
+
   Future<List<Denuncia>> getDenunciasByCiudadano() async {
     Response res = await get(Uri.parse('$_apiURL/ciudadano?idciudadano=1'));
     List<Denuncia> denuncias = [];

@@ -4,20 +4,28 @@ import '../../models/denuncia.dart';
 import '../../services/denuncia_Services.dart';
 import '../../models/hospital.dart';
 import '../../services/hospital_Services.dart';
+import '../verDenuncia/verDenuncia.dart';
 
 class denunciasHospital extends StatefulWidget {
-  const denunciasHospital({Key? key}) : super(key: key);
-  State<denunciasHospital> createState() => _InicioState();
+  const denunciasHospital({Key? key, required this.idHospitalS})
+      : super(key: key);
+  final int idHospitalS;
+
+  State<denunciasHospital> createState() => _InicioState(idHospitalS);
 }
 
 class _InicioState extends State<denunciasHospital> {
   late Future<List<Denuncia>> _listaDenuncias;
   late Future<Hospital> _hospitalEspecifico;
+  late int idSH;
+  _InicioState(int idHospitalS) {
+    idSH = idHospitalS;
+  }
 
   @override
   void initState() {
     super.initState();
-    _listaDenuncias = DenunciaService().getDenunciasByHospital(1);
+    _listaDenuncias = DenunciaService().getDenunciasByHospital(idSH);
   }
 
   @override
@@ -256,10 +264,14 @@ class _InicioState extends State<denunciasHospital> {
                                                                   .all(2),
                                                         ),
                                                         onPressed: () {
-                                                          Navigator
-                                                              .pushReplacementNamed(
-                                                                  context,
-                                                                  'VerDenuncia');
+                                                          Navigator.push(
+                                                            context,
+                                                            MaterialPageRoute(
+                                                                builder: (context) =>
+                                                                    VerDenunciaEspecificaPage(
+                                                                        idDenunciaS:
+                                                                            _denuncia.iddenuncia)),
+                                                          );
                                                         },
                                                         child: Container(
                                                           width: 200,

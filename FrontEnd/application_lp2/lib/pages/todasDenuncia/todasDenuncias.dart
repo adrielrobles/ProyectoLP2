@@ -6,6 +6,8 @@ import '../../models/hospital.dart';
 import '../../services/hospital_Services.dart';
 import 'package:proyectolenguajes/widgets/nav_Bar.dart';
 
+import '../verDenuncia/verDenuncia.dart';
+
 class TodasDenunciasApp extends StatefulWidget {
   const TodasDenunciasApp({Key? key}) : super(key: key);
   State<TodasDenunciasApp> createState() => _InicioState();
@@ -254,10 +256,14 @@ class _InicioState extends State<TodasDenunciasApp> {
                                                                     .all(2),
                                                           ),
                                                           onPressed: () {
-                                                            Navigator
-                                                                .pushReplacementNamed(
-                                                                    context,
-                                                                    'VerDenuncia');
+                                                            Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                  builder: (context) =>
+                                                                      VerDenunciaEspecificaPage(
+                                                                          idDenunciaS:
+                                                                              _denuncia.iddenuncia)),
+                                                            );
                                                           },
                                                           child: Container(
                                                             width: 200,

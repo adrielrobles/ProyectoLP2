@@ -20,9 +20,13 @@ final Map<String, Widget Function(BuildContext)> appRoutes = {
   'verHospitales': (_) => const VerHospitalesPage(),
   'eliminar': (_) => Eliminar(),
   'crearDenuncia': (_) => const CrearDenunciaPage(idhospital: "1"),
-  'VerDenuncia': (_) => const VerDenunciaEspecificaPage(),
+  'VerDenuncia': (_) => const VerDenunciaEspecificaPage(
+        idDenunciaS: 1,
+      ),
   'mostrarDenuncia': (_) => const MostrarDenuncias(),
   'ubicacion': (_) => const ubicacionApp(),
   'todas': (_) => const TodasDenunciasApp(),
-  'hospitaltodas': (_) => const denunciasHospital(),
+  'hospitaltodas': (_) => const denunciasHospital(
+        idHospitalS: 1,
+      ),
 };

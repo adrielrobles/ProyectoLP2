@@ -122,7 +122,7 @@ class LoginPage extends StatefulWidget {
                                 ),
                               ),
                               filled: true,
-                              fillColor: Color.fromARGB(104, 196, 196, 196),
+                              fillColor: Color.fromARGB(255, 255, 255, 255),
                             ),
                           ),
                           Text('Contraseña:',
@@ -157,7 +157,7 @@ class LoginPage extends StatefulWidget {
                                 ),
                               ),
                               filled: true,
-                              fillColor: Color.fromARGB(104, 196, 196, 196),
+                              fillColor: Color.fromARGB(255, 255, 255, 255),
                             ),
                           ),
 

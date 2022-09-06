@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../models/denuncia.dart';
 import '../../services/denuncia_Services.dart';
+import '../../widgets/nav_Bar.dart';
 
 class MostrarDenuncias extends StatefulWidget  {
   const MostrarDenuncias({Key? key}) : super(key: key);
@@ -23,8 +24,14 @@ class _MainPageState extends State<MostrarDenuncias> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+         bottomNavigationBar: NavBar(
+        idPage: '0',
+      ),
         body: _futureCardBody()
+        
+        
       )
+      
     );
   }
 
@@ -249,5 +256,7 @@ class _MainPageState extends State<MostrarDenuncias> {
         }
       }
     ); 
+    
   }
+  
 }

@@ -2,6 +2,7 @@ import 'dart:js_util';
 
 import 'package:flutter/material.dart';
 import 'package:proyectolenguajes/pages/crearDenuncia/crearDenuncia.dart';
+import 'package:proyectolenguajes/pages/verHospitales/denunciaHospital.dart';
 import 'package:proyectolenguajes/widgets/nav_Bar.dart';
 
 import '../../models/hospital.dart';
@@ -315,10 +316,14 @@ class _InicioState extends State<VerHospitalesPage> {
                                                           ),
                                                         ),
                                                         onPressed: () {
-                                                          Navigator
-                                                              .pushReplacementNamed(
-                                                                  context,
-                                                                  'hospitaltodas');
+                                                          Navigator.push(
+                                                            context,
+                                                            MaterialPageRoute(
+                                                                builder: (context) =>
+                                                                    denunciasHospital(
+                                                                        idHospitalS:
+                                                                            _info.idhospital)),
+                                                          );
                                                         }),
                                                   ),
                                                 ),

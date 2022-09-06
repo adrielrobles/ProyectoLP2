@@ -30,6 +30,10 @@ router.get('/search', async function(req, res, next) {
 });
 });
 
+/*get: Visualizar todas las denuncias por id del hospital*/
+
+
+
 /*Visualizar hospital por id especifico*/
 router.get('/:idhospital' , async (req , res , next) => {
 

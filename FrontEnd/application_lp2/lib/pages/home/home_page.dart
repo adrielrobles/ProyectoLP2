@@ -56,7 +56,7 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   onTap: () {
-                    Navigator.pushReplacementNamed(context, 'mostrarDenuncia');
+                    Navigator.pushReplacementNamed(context, 'todas');
                   },
                 ),
                 const SizedBox(width: 20),
@@ -154,7 +154,7 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   onTap: () {
-                    Navigator.pushReplacementNamed(context, 'VerDenuncia');
+                    Navigator.pushReplacementNamed(context, 'mostrarDenuncia');
                   },
                 )
               ],

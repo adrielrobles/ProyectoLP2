@@ -4,20 +4,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:proyectolenguajes/models/denuncia.dart';
 import 'package:proyectolenguajes/pages/crearDenuncia/crearDenuncia.dart';
+import 'package:proyectolenguajes/pages/verHospitales/verHospitales.dart';
+import 'package:proyectolenguajes/pages/verHospitales/denunciaHospital.dart';
 import '../../widgets/blue_button.dart' as blue;
 import '../../widgets/white_button.dart' as white;
+import 'package:proyectolenguajes/widgets/nav_Bar.dart';
 
 import '../../models/hospital.dart';
 import '../../services/denuncia_Services.dart';
 import '../../services/hospital_Services.dart';
 
 class VerDenunciaEspecificaPage extends StatefulWidget {
-  const VerDenunciaEspecificaPage({Key? key}) : super(key: key);
+  const VerDenunciaEspecificaPage({Key? key, required this.idDenunciaS})
+      : super(key: key);
+  final int idDenunciaS;
 
-  State<VerDenunciaEspecificaPage> createState() => _InicioState();
+  State<VerDenunciaEspecificaPage> createState() => _InicioState(idDenunciaS);
 }
 
 class _InicioState extends State<VerDenunciaEspecificaPage> {
+  late int idS;
+  _InicioState(int idDenunciaS) {
+    idS = idDenunciaS;
+  }
   late Future<Denuncia> _denunciaEspecifica;
   late Future<Hospital> _hospitalEspecifico;
   bool _lightIsOn = false;
@@ -36,7 +45,7 @@ class _InicioState extends State<VerDenunciaEspecificaPage> {
   @override
   void initState() {
     super.initState();
-    _denunciaEspecifica = DenunciaService().getDenunciaEspecifica(1);
+    _denunciaEspecifica = DenunciaService().getDenunciaEspecifica(idS);
   }
 
   @override
@@ -100,7 +109,10 @@ class _InicioState extends State<VerDenunciaEspecificaPage> {
                                             elevation:
                                                 MaterialStateProperty.all(2),
                                           ),
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            Navigator.pushReplacementNamed(
+                                                context, 'ubicacion');
+                                          },
                                           child: Container(
                                             width: 200,
                                             height: 50,
@@ -125,7 +137,16 @@ class _InicioState extends State<VerDenunciaEspecificaPage> {
                                             elevation:
                                                 MaterialStateProperty.all(2),
                                           ),
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      denunciasHospital(
+                                                          idHospitalS: hospi
+                                                              .idhospital)),
+                                            );
+                                          },
                                           child: Container(
                                             width: 200,
                                             height: 50,
@@ -246,6 +267,10 @@ class _InicioState extends State<VerDenunciaEspecificaPage> {
                                       // Toggle light when tapped.
                                       _lightIsOn = !_lightIsOn;
                                     });
+                                    if (_lightIsOn) {
+                                      DenunciaService().actualizarApoyo(
+                                          denun, denun.iddenuncia);
+                                    }
                                   },
                                   child: Container(
                                       padding: const EdgeInsets.all(8),
@@ -274,43 +299,18 @@ class _InicioState extends State<VerDenunciaEspecificaPage> {
                       )
                     ],
                   );
-                } else if (snapshot2.hasError) {
-                  print(snapshot2.error);
-                  return Text("Error");
+                } else {
+                  return const Center(child: CircularProgressIndicator());
                 }
-                throw UnimplementedError();
               },
             );
-          } else if (snapshot.hasError) {
-            print(snapshot.error);
-            return Text("Error");
+          } else {
+            return const Center(child: CircularProgressIndicator());
           }
-          return Center(
-            child: CircularProgressIndicator(),
-          );
         },
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Hospitales',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            label: 'Inicio',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.list),
-            label: 'Denuncias',
-          ),
-        ],
-        iconSize: 30,
-        currentIndex: _selectedIndex,
-        unselectedItemColor: Colors.white,
-        selectedItemColor: Color.fromARGB(255, 230, 65, 84),
-        onTap: _onItemTapped,
-        backgroundColor: Color.fromARGB(255, 56, 83, 152),
+      bottomNavigationBar: NavBar(
+        idPage: '0',
       ),
     );
   }

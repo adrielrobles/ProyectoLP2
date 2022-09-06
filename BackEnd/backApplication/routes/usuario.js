@@ -1,6 +1,6 @@
 var express = require('express');
 const { Op } = require("sequelize");
-
+/*Adriel Robles*/ 
 var router = express.Router();
 
 const Sequelize = require('../models/index.js').sequelize;

@@ -6,6 +6,7 @@ import '../../services/denuncia_Services.dart';
 import '../../services/hospital_Services.dart';
 import '../home/home_page.dart';
 
+//Adriel Robles
 class CrearDenunciaPage extends StatefulWidget {
   const CrearDenunciaPage({Key? key, required this.idhospital})
       : super(key: key);

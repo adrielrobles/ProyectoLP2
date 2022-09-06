@@ -3,53 +3,53 @@ import 'package:flutter/material.dart';
 import '../../services/usuario_Sevices.dart';
 import '../../widgets/blue_button.dart' as blue;
 
+//Jean Moreano y Adriel Robles
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
   State<LoginPage> createState() => _InicioState();
-
 }
-  class _InicioState extends State<LoginPage> {
-  @override
-    
 
+class _InicioState extends State<LoginPage> {
+  @override
   TextEditingController? textController1;
   TextEditingController? textController2;
 
-  void validarUsuario(){
+  void validarUsuario() {
     final data = {
-      "correo":"${textController1?.text}",
-      "contrasena":"${textController2?.text}",
+      "correo": "${textController1?.text}",
+      "contrasena": "${textController2?.text}",
     };
-    UsuarioService().validarUsuario(data).then((value) => {if(value[1]){_showAlertDialog()}});
+    UsuarioService().validarUsuario(data).then((value) => {
+          if (value[1]) {_showAlertDialog()}
+        });
   }
 
-   void _showAlertDialog() {
+  void _showAlertDialog() {
     showDialog(
-      context: context,
-      builder: (buildcontext) {
-        return AlertDialog(
-          backgroundColor: Color.fromARGB(255, 196, 196, 196),
-          title: Text("Inicio de sesion valido!"),
-          actions: <Widget>[
-            FlatButton(
-                          color: Color.fromARGB(255, 230, 65, 84),
-                          textColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20)),
-                          child: Text(
-                            "Cerrar",
-                            style: TextStyle(
-                              fontSize: 20.0,
-                            ),
-                          ),
-                          onPressed: () {
-                            Navigator.pushReplacementNamed(context, 'home');
-                          }),
-          ],
-        );
-      }
-    );
+        context: context,
+        builder: (buildcontext) {
+          return AlertDialog(
+            backgroundColor: Color.fromARGB(255, 196, 196, 196),
+            title: Text("Inicio de sesion valido!"),
+            actions: <Widget>[
+              FlatButton(
+                  color: Color.fromARGB(255, 230, 65, 84),
+                  textColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                  child: Text(
+                    "Cerrar",
+                    style: TextStyle(
+                      fontSize: 20.0,
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.pushReplacementNamed(context, 'home');
+                  }),
+            ],
+          );
+        });
     textController1?.clear();
     textController2?.clear();
   }
@@ -64,33 +64,32 @@ class LoginPage extends StatefulWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        backgroundColor:  Color.fromARGB(255, 56, 83, 152),
-        body: CustomPaint(
-          child: Center(
-            child: Column(
+        child: Scaffold(
+            backgroundColor: Color.fromARGB(255, 56, 83, 152),
+            body: CustomPaint(
+                child: Center(
+                    child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget> [
+              children: <Widget>[
                 const Padding(
                   padding: EdgeInsets.zero,
                   child: Text(
-                   'Iniciar Sesión',
-                       textAlign: TextAlign.center,
-                        style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 30,
-                color: Colors.white,
-              ),
-            ),
+                    'Iniciar Sesión',
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30,
+                      color: Colors.white,
+                    ),
+                  ),
                 ),
                 Container(
-                  padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 30),
-                  child: Column(
-                    children: [
-                      
-                      Column(
-        children: <Widget> [
-                         Text('Correo Electrónico:',
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 30, horizontal: 30),
+                    child: Column(
+                      children: [
+                        Column(children: <Widget>[
+                          Text('Correo Electrónico:',
                               style: TextStyle(
                                 fontFamily: 'Roboto',
                                 color: Colors.white,
@@ -160,28 +159,17 @@ class LoginPage extends StatefulWidget {
                               fillColor: Color.fromARGB(255, 255, 255, 255),
                             ),
                           ),
-
-          const SizedBox(height: 10),
-
-          const SizedBox(height: 30),
-          blue.BlueButton(
-                buttonText: 'Iniciar Sesion',
-                onPressed: () {
-                  validarUsuario();
-                }),
-        ]
-      ),
-                     
-                    ],
-                  )
-                ),
+                          const SizedBox(height: 10),
+                          const SizedBox(height: 30),
+                          blue.BlueButton(
+                              buttonText: 'Iniciar Sesion',
+                              onPressed: () {
+                                validarUsuario();
+                              }),
+                        ]),
+                      ],
+                    )),
               ],
-            )
-          )
-        )
-      )
-    );
+            )))));
   }
-
-
-  }
+}

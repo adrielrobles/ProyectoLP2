@@ -1,5 +1,5 @@
 import 'dart:js_util';
-
+//Darinka Townsend
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:proyectolenguajes/models/denuncia.dart';
@@ -266,13 +266,19 @@ class _InicioState extends State<VerDenunciaEspecificaPage> {
                                     setState(() {
                                       // Toggle light when tapped.
                                       if (!_lightIsOn) {
-                                      DenunciaService().actualizarApoyo(
-                                           denun.iddenuncia).then((value) => {if(value){
-                                                _denunciaEspecifica = DenunciaService().getDenunciaEspecifica(idS)
-                                           }});
-                                      _lightIsOn = true;
-                                    }
-                                     
+                                        DenunciaService()
+                                            .actualizarApoyo(denun.iddenuncia)
+                                            .then((value) => {
+                                                  if (value)
+                                                    {
+                                                      _denunciaEspecifica =
+                                                          DenunciaService()
+                                                              .getDenunciaEspecifica(
+                                                                  idS)
+                                                    }
+                                                });
+                                        _lightIsOn = true;
+                                      }
                                     });
                                   },
                                   child: Container(

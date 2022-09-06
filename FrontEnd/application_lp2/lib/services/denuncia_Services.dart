@@ -3,6 +3,7 @@ import 'package:http/http.dart';
 import 'package:proyectolenguajes/models/denuncia.dart';
 
 import '../models/denuncia.dart';
+//Todos
 
 class DenunciaService {
   final String _apiURL = "http://localhost:3001/denuncia";
@@ -31,7 +32,8 @@ class DenunciaService {
   }
 
   Future<List<Denuncia>> getDenunciasByCiudadano(idciudadano) async {
-    Response res = await get(Uri.parse('$_apiURL/ciudadano?idciudadano=$idciudadano'));
+    Response res =
+        await get(Uri.parse('$_apiURL/ciudadano?idciudadano=$idciudadano'));
     List<Denuncia> denuncias = [];
     if (res.statusCode == 200) {
       var json = List.from(jsonDecode(res.body));
@@ -65,7 +67,8 @@ class DenunciaService {
   }
 
   Future<bool> eliminarDenuncia(int iddenuncia) async {
-    Response res = await post(Uri.parse(_apiURL + "/delete/" + iddenuncia.toString()));
+    Response res =
+        await post(Uri.parse(_apiURL + "/delete/" + iddenuncia.toString()));
     if (res.statusCode == 201) {
       return true;
     } else {

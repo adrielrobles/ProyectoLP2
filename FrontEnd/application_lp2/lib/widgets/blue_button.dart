@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+//Todos
 class BlueButton extends StatelessWidget {
   const BlueButton(
       {Key? key, required this.buttonText, required this.onPressed})
@@ -13,7 +14,8 @@ class BlueButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(Color.fromARGB(255, 56, 83, 152)),
+        backgroundColor:
+            MaterialStateProperty.all(Color.fromARGB(255, 56, 83, 152)),
         shape: MaterialStateProperty.all(const StadiumBorder()),
         elevation: MaterialStateProperty.all(2),
       ),

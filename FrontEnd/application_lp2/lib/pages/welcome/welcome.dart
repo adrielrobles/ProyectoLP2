@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../widgets/blue_button.dart' as blue;
 import '../../widgets/white_button.dart' as white;
+//Darinka Townsend
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({Key? key}) : super(key: key);

@@ -6,6 +6,7 @@ import '../../models/hospital.dart';
 import '../../services/hospital_Services.dart';
 import '../../widgets/nav_Bar.dart';
 import '../verDenuncia/verDenuncia.dart';
+//Darinka Townsend
 
 class denunciasHospital extends StatefulWidget {
   const denunciasHospital({Key? key, required this.idHospitalS})

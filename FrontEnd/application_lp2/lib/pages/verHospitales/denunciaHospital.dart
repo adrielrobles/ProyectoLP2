@@ -4,6 +4,7 @@ import '../../models/denuncia.dart';
 import '../../services/denuncia_Services.dart';
 import '../../models/hospital.dart';
 import '../../services/hospital_Services.dart';
+import '../../widgets/nav_Bar.dart';
 import '../verDenuncia/verDenuncia.dart';
 
 class denunciasHospital extends StatefulWidget {
@@ -30,7 +31,13 @@ class _InicioState extends State<denunciasHospital> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(child: Scaffold(body: _futureCardBody()));
+    return SafeArea(
+        child: Scaffold(
+      body: _futureCardBody(),
+      bottomNavigationBar: NavBar(
+        idPage: '0',
+      ),
+    ));
   }
 
   Widget _futureCardBody() {

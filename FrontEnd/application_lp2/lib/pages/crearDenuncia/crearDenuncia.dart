@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 import '../../models/hospital.dart';
 import '../../services/denuncia_Services.dart';
 import '../../services/hospital_Services.dart';
+import '../home/home_page.dart';
 
 class CrearDenunciaPage extends StatefulWidget {
-  const CrearDenunciaPage({Key? key, required this.idhospital}) : super(key: key);
+  const CrearDenunciaPage({Key? key, required this.idhospital})
+      : super(key: key);
   final String idhospital;
 
-    State<CrearDenunciaPage> createState() => _InicioState(idhospital);
-
+  State<CrearDenunciaPage> createState() => _InicioState(idhospital);
 }
 
 List<DropdownMenuItem<String>> dropdownItems(List<Hospital> data) {
@@ -27,13 +28,10 @@ List<DropdownMenuItem<String>> dropdownItems(List<Hospital> data) {
   return menuItems;
 }
 
-
-
-
 class _InicioState extends State<CrearDenunciaPage> {
-    String selectedValue = "1";
+  String selectedValue = "1";
 
-  _InicioState(String id_hospital){
+  _InicioState(String id_hospital) {
     selectedValue = id_hospital;
   }
 
@@ -43,42 +41,43 @@ class _InicioState extends State<CrearDenunciaPage> {
   TextEditingController? textController2;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  void crearDenuncia(){
+  void crearDenuncia() {
     final data = {
-      "titulo":"${textController1?.text}",
-      "descripcion":"${textController2?.text}",
-      "idciudadano":1,
+      "titulo": "${textController1?.text}",
+      "descripcion": "${textController2?.text}",
+      "idciudadano": 1,
       "idhospital": int.parse(selectedValue)
     };
-    DenunciaService().crearDenuncia(data).then((value) => {if(value){_showAlertDialog()}});
+    DenunciaService().crearDenuncia(data).then((value) => {
+          if (value) {_showAlertDialog()}
+        });
   }
 
   void _showAlertDialog() {
     showDialog(
-      context: context,
-      builder: (buildcontext) {
-        return AlertDialog(
-          backgroundColor: Color.fromARGB(255, 196, 196, 196),
-          title: Text("¡¡ Denuncia Creada con exito !!"),
-          actions: <Widget>[
-            FlatButton(
-                          color: Color.fromARGB(255, 230, 65, 84),
-                          textColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20)),
-                          child: Text(
-                            "Cerrar",
-                            style: TextStyle(
-                              fontSize: 20.0,
-                            ),
-                          ),
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          }),
-          ],
-        );
-      }
-    );
+        context: context,
+        builder: (buildcontext) {
+          return AlertDialog(
+            backgroundColor: Color.fromARGB(255, 196, 196, 196),
+            title: Text("¡¡ Denuncia Creada con exito !!"),
+            actions: <Widget>[
+              FlatButton(
+                  color: Color.fromARGB(255, 230, 65, 84),
+                  textColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                  child: Text(
+                    "Cerrar",
+                    style: TextStyle(
+                      fontSize: 20.0,
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  }),
+            ],
+          );
+        });
     textController1?.clear();
     textController2?.clear();
   }
@@ -93,7 +92,6 @@ class _InicioState extends State<CrearDenunciaPage> {
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: Color.fromARGB(255, 56, 83, 152),
@@ -115,7 +113,11 @@ class _InicioState extends State<CrearDenunciaPage> {
                     child: IconButton(
                       icon: const Icon(Icons.arrow_back_ios_new),
                       onPressed: () {
-                          Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const HomePage()),
+                        );
                       },
                       color: Colors.white,
                     ),

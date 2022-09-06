@@ -265,12 +265,15 @@ class _InicioState extends State<VerDenunciaEspecificaPage> {
                                   onTap: () {
                                     setState(() {
                                       // Toggle light when tapped.
-                                      _lightIsOn = !_lightIsOn;
-                                    });
-                                    if (_lightIsOn) {
+                                      if (!_lightIsOn) {
                                       DenunciaService().actualizarApoyo(
-                                          denun, denun.iddenuncia);
+                                           denun.iddenuncia).then((value) => {if(value){
+                                                _denunciaEspecifica = DenunciaService().getDenunciaEspecifica(idS)
+                                           }});
+                                      _lightIsOn = !_lightIsOn;
                                     }
+                                     
+                                    });
                                   },
                                   child: Container(
                                       padding: const EdgeInsets.all(8),

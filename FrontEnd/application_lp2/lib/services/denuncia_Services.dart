@@ -20,10 +20,10 @@ class DenunciaService {
 
   //ACTUALIZAR APOYO
 
-  Future<bool> actualizarApoyo(data, idDenuncia) async {
-    Response res = await post(Uri.parse(_apiURL + "/apoyo/" + idDenuncia));
+  Future<bool> actualizarApoyo(idDenuncia) async {
+    Response res = await put(Uri.parse('$_apiURL/apoyo/$idDenuncia'));
 
-    if (res.statusCode == 201) {
+    if (res.statusCode == 200) {
       return true;
     } else {
       throw Exception("Fallo la insercion en Favoritos");

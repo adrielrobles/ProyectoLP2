@@ -30,8 +30,8 @@ class DenunciaService {
     }
   }
 
-  Future<List<Denuncia>> getDenunciasByCiudadano() async {
-    Response res = await get(Uri.parse('$_apiURL/ciudadano?idciudadano=1'));
+  Future<List<Denuncia>> getDenunciasByCiudadano(idciudadano) async {
+    Response res = await get(Uri.parse('$_apiURL/ciudadano?idciudadano=$idciudadano'));
     List<Denuncia> denuncias = [];
     if (res.statusCode == 200) {
       var json = List.from(jsonDecode(res.body));

@@ -270,7 +270,7 @@ class _InicioState extends State<VerDenunciaEspecificaPage> {
                                            denun.iddenuncia).then((value) => {if(value){
                                                 _denunciaEspecifica = DenunciaService().getDenunciaEspecifica(idS)
                                            }});
-                                      _lightIsOn = !_lightIsOn;
+                                      _lightIsOn = true;
                                     }
                                      
                                     });

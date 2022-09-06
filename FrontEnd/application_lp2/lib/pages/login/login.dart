@@ -21,7 +21,7 @@ class LoginPage extends StatefulWidget {
       "correo":"${textController1?.text}",
       "contrasena":"${textController2?.text}",
     };
-    UsuarioService().validarUsuario(data).then((value) => {if(value){_showAlertDialog()}});
+    UsuarioService().validarUsuario(data).then((value) => {if(value[1]){_showAlertDialog()}});
   }
 
    void _showAlertDialog() {

@@ -31,7 +31,7 @@ class WelcomePage extends StatelessWidget {
             blue.BlueButton(
                 buttonText: 'Registrarse',
                 onPressed: () {
-                  Navigator.pushReplacementNamed(context, 'home');
+                  Navigator.pushReplacementNamed(context, 'login');
                 }),
             const SizedBox(height: 15),
             blue.BlueButton(

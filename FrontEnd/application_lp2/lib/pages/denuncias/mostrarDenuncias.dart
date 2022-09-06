@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proyectolenguajes/services/usuario_Sevices.dart';
 
 import '../../models/denuncia.dart';
 import '../../services/denuncia_Services.dart';
@@ -17,7 +18,8 @@ class _MainPageState extends State<MostrarDenuncias> {
   @override
   void initState() {
     super.initState();
-    _listaDenuncias = DenunciaService().getDenunciasByCiudadano();
+    print(UsuarioService().recuperarCiudadano());
+    _listaDenuncias = DenunciaService().getDenunciasByCiudadano(UsuarioService().recuperarCiudadano());
   }
 
   @override
@@ -25,7 +27,7 @@ class _MainPageState extends State<MostrarDenuncias> {
     return SafeArea(
       child: Scaffold(
          bottomNavigationBar: NavBar(
-        idPage: '0',
+        idPage: '2',
       ),
         body: _futureCardBody()
         
@@ -228,7 +230,7 @@ class _MainPageState extends State<MostrarDenuncias> {
                             onPressed: (){
                              DenunciaService().eliminarDenuncia(_denuncia.iddenuncia).then((value) {
                               setState((){
-                                _listaDenuncias = DenunciaService().getDenunciasByCiudadano();
+                                _listaDenuncias = DenunciaService().getDenunciasByCiudadano(UsuarioService().recuperarCiudadano());
                               });
                              } );
                             }, 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proyectolenguajes/services/usuario_Sevices.dart';
 
 import '../../models/hospital.dart';
 import '../../services/denuncia_Services.dart';
@@ -45,7 +46,7 @@ class _InicioState extends State<CrearDenunciaPage> {
     final data = {
       "titulo": "${textController1?.text}",
       "descripcion": "${textController2?.text}",
-      "idciudadano": 1,
+      "idciudadano": UsuarioService().recuperarCiudadano(),
       "idhospital": int.parse(selectedValue)
     };
     DenunciaService().crearDenuncia(data).then((value) => {
